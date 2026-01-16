@@ -11,6 +11,8 @@
     "server": "json-server --watch db.json --port 3001"
   },
   "dependencies": {
+    "@radix-ui/react-aspect-ratio": "^1.1.8",
+    "@radix-ui/react-scroll-area": "^1.2.10",
     "@radix-ui/react-slot": "^1.2.4",
     "@tailwindcss/vite": "^4.1.18",
     "axios": "^1.13.2",
