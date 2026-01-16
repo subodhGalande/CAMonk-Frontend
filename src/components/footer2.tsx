@@ -92,16 +92,14 @@ const Footer2 = ({
                   </LogoText>
                 </Logo>
               </div>
-              <p className="mt-4 max-w-xs text-muted-foreground font-bold">
-                {tagline}
-              </p>
+              <p className="mt-4 max-w-xs text-muted/75 font-bold">{tagline}</p>
             </div>
             {menuItems.map((section, sectionIdx) => (
               <div key={sectionIdx}>
                 <h3 className="mb-4 font-bold text-muted-foreground">
                   {section.title.toUpperCase()}
                 </h3>
-                <ul className="space-y-2 text-muted">
+                <ul className="space-y-2 text-muted/75">
                   {section.links.map((link, linkIdx) => (
                     <li
                       key={linkIdx}
