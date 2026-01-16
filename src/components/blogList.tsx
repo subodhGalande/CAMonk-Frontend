@@ -6,6 +6,18 @@ export const BlogList = () => {
       <BlogCard />
       <BlogCard />
       <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
     </div>
   );
 };
