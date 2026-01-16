@@ -1,6 +1,6 @@
 "use client";
 
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Book, Menu, Sunset, Trees, Zap, GraduationCap } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -39,7 +39,6 @@ interface Navbar1Props {
   className?: string;
   logo?: {
     url: string;
-    src: string;
     alt: string;
     title: string;
     className?: string;
@@ -55,8 +54,8 @@ interface Navbar1Props {
 
 const Navbar1 = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
+    url: "https://www.camonk.com/",
+
     alt: "logo",
     title: "CA MONK",
   },
@@ -145,11 +144,9 @@ const Navbar1 = ({
           <div className="flex items-center gap-6">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <img
-                src={logo.src}
-                className="max-h-8 dark:invert"
-                alt={logo.alt}
-              />
+              <div className="bg-primary p-2 rounded-xl">
+                <GraduationCap className="size-7 text-white" />
+              </div>
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
@@ -170,15 +167,16 @@ const Navbar1 = ({
         </nav>
 
         {/* Mobile Menu */}
-        <div className="block lg:hidden">
+        <div className="block w-full px-4 lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <img
-                src={logo.src}
-                className="max-h-8 dark:invert"
-                alt={logo.alt}
-              />
+              <div className="bg-primary p-2 rounded-xl">
+                <GraduationCap className="size-7 text-white" />
+              </div>
+              <span className="text-lg font-semibold tracking-tighter">
+                {logo.title}
+              </span>
             </a>
             <Sheet>
               <SheetTrigger asChild>
@@ -190,11 +188,9 @@ const Navbar1 = ({
                 <SheetHeader>
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2">
-                      <img
-                        src={logo.src}
-                        className="max-h-8 dark:invert"
-                        alt={logo.alt}
-                      />
+                      <div className="bg-primary p-2 rounded-xl">
+                        <GraduationCap className="size-7 text-white" />
+                      </div>
                     </a>
                   </SheetTitle>
                 </SheetHeader>

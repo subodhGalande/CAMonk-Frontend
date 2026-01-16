@@ -21,7 +21,7 @@ export const BlogPage = () => {
             </ScrollArea>
           </div>
 
-          {/* RIGHT PANEL (hidden on mobile) */}
+          {/* RIGHT PANEL */}
           <div className="hidden md:block bg-white rounded-xl md:col-span-6">
             <BlogDetail />
           </div>

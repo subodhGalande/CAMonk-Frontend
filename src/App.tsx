@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Navbar1 />
-      <main className="mx-auto max-w-[1440px]">
+      <main className="mx-auto w-full md:max-w-[1440px]">
         <BlogPage />
       </main>
       <Footer2 />
