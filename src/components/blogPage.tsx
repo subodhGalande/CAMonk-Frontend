@@ -14,7 +14,7 @@ export const BlogPage = () => {
         <h1 className="text-4xl md:text-6xl font-black tracking-tighter">
           CA Monk Blog
         </h1>
-        <p className="text-muted-foreground md:text-xl text-center">
+        <p className="text-muted-foreground md:text-xl px-4 text-center">
           Stay updated with the latest trends in finance, accounting and career
           growth
         </p>

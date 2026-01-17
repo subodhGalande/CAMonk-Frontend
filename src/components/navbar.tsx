@@ -54,7 +54,7 @@ interface NavbarProps {
 
 const Navbar = ({
   logo = {
-    url: "https://www.camonk.com/",
+    url: "http://localhost:5173/",
 
     alt: "logo",
     title: "CA MONK",

@@ -85,7 +85,15 @@ export const BlogDetail = () => {
               CATEGORY
             </p>
             <p className="text-sm md:text-base font-semibold">
-              {data.category.join(", ")}
+              {data.category
+                .map((cat) =>
+                  cat
+                    .toLowerCase()
+                    .split(" ")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")
+                )
+                .join(", ")}
             </p>
           </div>
 

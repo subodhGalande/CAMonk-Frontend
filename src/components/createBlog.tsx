@@ -46,11 +46,11 @@ export const CreateBlog = () => {
 
     const finalData: BlogData = {
       title: data.title as string,
+      category: selectedCategories.map((cat) => cat.toUpperCase()),
       description: data.description as string,
+      date: new Date().toISOString(),
       coverImage: data.coverImage as string,
       content: data.content as string,
-      category: selectedCategories.map((cat) => cat.toUpperCase()),
-      date: new Date().toISOString(),
     };
 
     mutate(finalData, {
