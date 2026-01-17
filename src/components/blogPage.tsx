@@ -1,13 +1,27 @@
 import { ScrollArea } from "./ui/scroll-area";
 import { BlogList } from "./blogList";
-import { BlogDetail } from "./blogDetail";
+import { useBlogs } from "../hooks/useBlogs";
+import { Skeleton } from "./ui/skeleton";
+import { Outlet } from "react-router-dom";
 
 export const BlogPage = () => {
+  const { data, isLoading, error } = useBlogs();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <>
       <section className="flex flex-col gap-4 justify-center items-center py-20 ">
-        <h1 className="text-6xl font-black tracking-tighter">CA Monk Blog</h1>
-        <p className="text-muted-foreground text-xl text-center">
+        <h1 className="text-4xl md:text-6xl font-black tracking-tighter">
+          CA Monk Blog
+        </h1>
+        <p className="text-muted-foreground md:text-xl text-center">
           Stay updated with the latest trends in finance, accounting and career
           growth
         </p>
@@ -17,13 +31,17 @@ export const BlogPage = () => {
           {/* LEFT PANEL */}
           <div className="md:col-span-2 relative">
             <ScrollArea className=" h-full max-h-[calc(100vh-4rem)]">
-              <BlogList />
+              {isLoading ? (
+                <Skeleton className="h-[125px] w-full bg-muted-foreground/50 rounded-xl" />
+              ) : (
+                data && <BlogList blogs={data} />
+              )}
             </ScrollArea>
           </div>
 
           {/* RIGHT PANEL */}
           <div className="hidden md:block bg-white rounded-xl md:col-span-6">
-            <BlogDetail />
+            <Outlet />
           </div>
         </div>
       </div>

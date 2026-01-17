@@ -1,67 +1,120 @@
+import { useParams, useNavigate } from "react-router-dom";
+import { useBlogDetails } from "../hooks/useBlogDetails";
+import { Share2, ArrowLeft } from "lucide-react";
 import { AspectRatio } from "./ui/aspect-ratio";
+import { Button } from "./ui/button";
+import { toast } from "sonner";
+import { Skeleton } from "./ui/skeleton";
+import { useMediaQuery } from "react-responsive";
 
 export const BlogDetail = () => {
-  return (
-    <div className="pb-6">
-      <AspectRatio ratio={21 / 9} className="p-0">
-        <img
-          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-          alt="blog image"
-          className="rounded-t-xl object-cover h-full w-full"
-        />
-      </AspectRatio>
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-      <div className="mt-12 md:px-8">
-        <h2 className="text-6xl font-black tracking-tighter ">
-          The Future of Fintech in 2024
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  const { data, isLoading, error } = useBlogDetails(id!);
+
+  if (isLoading) {
+    return (
+      <div className="p-6">
+        <Skeleton className="h-[400px] bg-muted-foreground/50 w-full rounded-xl" />
+        <Skeleton className="h-20 mt-12 bg-muted-foreground/50 md:px-8" />
+        <Skeleton className="h-20 mt-12 bg-muted-foreground/50 md:px-8" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="p-6 text-red-500">Failed to load blog</div>;
+  }
+
+  if (!data) return null;
+
+  return (
+    <div className="p-4">
+      {/* BACK BUTTON */}
+      <button
+        onClick={() => navigate(-1)}
+        className="md:hidden mb-6 text-sm justify-center flex items-center text-center gap-1"
+      >
+        <ArrowLeft className="size-4" />
+        Back
+      </button>
+
+      {/* COVER */}
+      {isMobile ? (
+        <AspectRatio ratio={16 / 9}>
+          <img
+            src={data.coverImage}
+            alt={data.title}
+            className="rounded-t-xl object-cover h-full w-full"
+          />
+        </AspectRatio>
+      ) : (
+        <AspectRatio ratio={21 / 9}>
+          <img
+            src={data.coverImage}
+            alt={data.title}
+            className="rounded-t-xl object-cover h-full w-full"
+          />
+        </AspectRatio>
+      )}
+
+      <div className="mt-6 md:mt-12 md:px-8">
+        <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
+          {data.title}
         </h2>
 
-        {/* CATEGORY AND DATE */}
-        <div className="flex rounded-lg mt-6 border-2 items-center justify-between bg-secondary">
-          <div className="w-full flex flex-col justify-center items-center h-full border-r-2 p-4">
-            <h2 className="text-xs font-semibold tracking-widest text-muted-foreground">
+        <Button
+          className="mt-6 text-xs md:text-base "
+          onClick={() => {
+            navigator.clipboard.writeText(window.location.href);
+            toast("Copied to clipboard");
+          }}
+        >
+          <Share2 className="size-4" />
+          Share Article
+        </Button>
+
+        {/* CATEGORY + DATE */}
+        <div className="flex rounded-lg mt-6 border-2 bg-secondary">
+          <div className="w-full text-center border-r-2 p-4">
+            <p className="text-xs tracking-widest text-muted-foreground">
               CATEGORY
-            </h2>
-            <p className="text-lg font-semibold">Fintech</p>
+            </p>
+            <p className="text-sm md:text-base font-semibold">
+              {data.category.join(", ")}
+            </p>
           </div>
-          <div className="w-full flex flex-col justify-center items-center h-full p-4">
-            <h2 className="text-xs font-semibold tracking-widest text-muted-foreground">
+
+          <div className="w-full text-center p-4">
+            <p className="text-xs tracking-widest text-muted-foreground">
               DATE
-            </h2>
-            <p className="text-lg font-semibold">2022-01-01</p>
+            </p>
+            <p className="text-sm md:text-base font-semibold">
+              {new Date(data.date).toLocaleDateString()}
+            </p>
           </div>
         </div>
 
-        {/* BLOG DESC */}
-        <div className="mt-12">
-          <p className="text-2xl text-foreground font-light">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas
-            corrupti expedita nihil amet deleniti laboriosam nesciunt repellat
-            odit placeat rem praesentium, perferendis molestiae eius ducimus
-            animi eaque, nemo dolore illo!
-          </p>
-        </div>
+        {/* DESCRIPTION */}
+        <p className="mt-12 md:text-2xl text-lg font-light">
+          {data.description}
+        </p>
 
-        {/* BLOG CONTENT */}
-        <div className="mt-6">
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas
-            corrupti expedita nihil amet deleniti laboriosam nesciunt repellat
-            odit placeat rem praesentium, perferendis molestiae eius ducimus
-            animi eaque, nemo dolore illo!
-          </p>
-        </div>
+        {/* CONTENT */}
+        <p className="mt-6 md:text-lg whitespace-pre-line">{data.content}</p>
 
         {/* TAGS */}
         <div className="mt-12">
-          <h2 className="text-2xl font-semibold">Tags</h2>
-
-          <div className="mt-4 flex gap-2 md:w-1/3 flex-wrap">
-            <div className="px-4 py-2 border-2 w-fit text-sm ">FINTECH</div>
-            <div className="px-4 py-2 border-2 w-fit text-sm ">FINTECH</div>
-            <div className="px-4 py-2 border-2 w-fit text-sm ">FINTECH</div>
-            <div className="px-4 py-2 border-2 w-fit text-sm ">FINTECH</div>
-            <div className="px-4 py-2 border-2 w-fit text-sm ">FINTECH</div>
+          <h2 className=" text-xl md:text-2xl font-semibold">Tags</h2>
+          <div className="mt-4 flex gap-2 flex-wrap">
+            {data.category.map((tag) => (
+              <div key={tag} className="px-4 py-2 border text-sm">
+                {tag}
+              </div>
+            ))}
           </div>
         </div>
       </div>

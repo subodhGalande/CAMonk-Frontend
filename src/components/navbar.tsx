@@ -35,7 +35,7 @@ interface MenuItem {
   items?: MenuItem[];
 }
 
-interface Navbar1Props {
+interface NavbarProps {
   className?: string;
   logo?: {
     url: string;
@@ -52,7 +52,7 @@ interface Navbar1Props {
   };
 }
 
-const Navbar1 = ({
+const Navbar = ({
   logo = {
     url: "https://www.camonk.com/",
 
@@ -135,9 +135,9 @@ const Navbar1 = ({
     Profile: { title: "Profile", url: "#" },
   },
   className,
-}: Navbar1Props) => {
+}: NavbarProps) => {
   return (
-    <section className={cn("py-4 max-w-[1440px] mx-auto", className)}>
+    <section className={cn("py-4 max-w-[1440px] border-b mx-auto", className)}>
       <div className="container">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
@@ -288,4 +288,4 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
   );
 };
 
-export { Navbar1 };
+export { Navbar };

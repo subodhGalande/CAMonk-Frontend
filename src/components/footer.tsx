@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import { Logo, LogoImage, LogoText } from "@/components/logo";
+import { Logo, LogoText } from "@/components/logo";
 import { GraduationCap } from "lucide-react";
 
 interface MenuItem {
@@ -27,7 +27,7 @@ interface Footer2Props {
   }[];
 }
 
-const Footer2 = ({
+const Footer = ({
   logo = {
     alt: "CA MONK",
     title: "CA MONK",
@@ -124,4 +124,4 @@ const Footer2 = ({
   );
 };
 
-export { Footer2 };
+export { Footer };
