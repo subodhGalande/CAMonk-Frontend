@@ -3,19 +3,10 @@ import { BlogList } from "./blogList";
 import { useBlogs } from "../hooks/useBlogs";
 import { Skeleton } from "./ui/skeleton";
 import { Outlet } from "react-router-dom";
-import { Button } from "./ui/button";
 import { CreateBlog } from "./createBlog";
 
 export const BlogPage = () => {
   const { data, isLoading, error } = useBlogs();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   return (
     <>
@@ -43,6 +34,9 @@ export const BlogPage = () => {
                 data && <BlogList blogs={data} />
               )}
             </ScrollArea>
+            {error && (
+              <div className="text-red-500">Error: {error.message}</div>
+            )}
           </div>
 
           {/* RIGHT PANEL */}

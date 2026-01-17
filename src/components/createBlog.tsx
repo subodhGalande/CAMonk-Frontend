@@ -74,7 +74,11 @@ export const CreateBlog = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] flex flex-col p-0">
         <DialogHeader className="p-6 pb-0">
-          <DialogTitle>Create New Blog</DialogTitle>
+          <DialogTitle>
+            <p className="text-2xl font-semibold tracking-tight">
+              Create New Blog
+            </p>
+          </DialogTitle>
         </DialogHeader>
         <ScrollArea className="flex-1 p-6">
           <form onSubmit={handleSubmit} id="create-blog-form">
