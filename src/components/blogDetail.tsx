@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useBlogDetails } from "../hooks/useBlogDetails";
-import { Share2, ArrowLeft } from "lucide-react";
+import { Share2, ArrowLeft, ThumbsUp, MessageSquare } from "lucide-react";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
@@ -18,9 +18,10 @@ export const BlogDetail = () => {
   if (isLoading) {
     return (
       <div className="p-6">
-        <Skeleton className="h-[400px] bg-muted-foreground/50 w-full rounded-xl" />
-        <Skeleton className="h-20 mt-12 bg-muted-foreground/50 md:px-8" />
-        <Skeleton className="h-20 mt-12 bg-muted-foreground/50 md:px-8" />
+        <Skeleton className="h-[200px] md:h-[400px] bg-muted-foreground/50 w-full rounded-xl" />
+        <Skeleton className="h-20 w-10/12 mt-6 md:mt-6 bg-muted-foreground/50 md:px-8" />
+        <Skeleton className="h-10 w-1/2 md:w-1/6  mt-6 md:mt-6 bg-muted-foreground/50 md:px-8" />
+        <Skeleton className="h-12 mt-6 md:mt-6 bg-muted-foreground/50 md:px-8" />
       </div>
     );
   }
@@ -116,6 +117,37 @@ export const BlogDetail = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      <div className="mt-12 py-8 md:px-8 flex justify-between border-t">
+        <div className="flex items-center gap-2">
+          <div className="rounded-full h-10 w-10 md:h-12 md:w-12 overflow-hidden">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW6FhncJA57fuJZAgzfnQNBQUxGVmGElTlVw&s"
+              alt="author Image"
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <h2 className="text-xs md:text-base font-semibold ">
+              Written by Arjun Mehta
+            </h2>
+            <p className="text-[0.6rem] md:text-sm font-light text-muted-foreground">
+              Senior Financial Analyst
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <ThumbsUp
+            fill="currentColor"
+            className="size-4 md:size-6 text-muted-foreground/50"
+          />
+          <MessageSquare
+            fill="currentColor"
+            className="size-4 md:size-6 text-muted-foreground/50"
+          />
         </div>
       </div>
     </div>

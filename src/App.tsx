@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BlogDetail } from "./components/blogDetail";
 import { useMediaQuery } from "react-responsive";
+import { ScrollToTop } from "./components/scrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
 
         <main className="mx-auto w-full md:max-w-[1440px]">
