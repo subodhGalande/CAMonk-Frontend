@@ -29,7 +29,7 @@ export const BlogCard = ({ blog }: { blog: Blog }) => {
         hover:shadow-md hover:-translate-y-[2px]
       "
     >
-      {/* LEFT BAR (slide + fade) */}
+      {/* LEFT BAR */}
       <div
         className="
           absolute left-0 top-0 h-full w-[.25rem] bg-primary

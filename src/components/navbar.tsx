@@ -137,10 +137,10 @@ const Navbar = ({
   className,
 }: NavbarProps) => {
   return (
-    <section className={cn("py-4 max-w-[1440px] border-b mx-auto", className)}>
+    <section className={cn("py-4  max-w-[1440px] border-b mx-auto", className)}>
       <div className="container">
         {/* Desktop Menu */}
-        <nav className="hidden items-center justify-between lg:flex">
+        <nav className="hidden lg:mx-auto items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
