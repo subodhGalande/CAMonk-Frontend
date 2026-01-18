@@ -7,7 +7,3 @@ export interface Blog {
   coverImage: string;
   content: string;
 }
-
-export interface DbSchema {
-  blogs: Blog[];
-}

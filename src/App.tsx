@@ -11,7 +11,7 @@ import { ScrollToTop } from "./components/scrollToTop";
 const queryClient = new QueryClient();
 
 function App() {
-  const isMobile = useMediaQuery({ maxWidth: 820 });
+  const isMobile = useMediaQuery({ maxWidth: 1023 });
 
   return (
     <QueryClientProvider client={queryClient}>
